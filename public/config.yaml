@@ -1,0 +1,178 @@
+title: "Dynamic Web Admin"
+theme:
+  primaryColor: "#3b82f6"
+  secondaryColor: "#64748b"
+  fontFamily: "Inter, system-ui, sans-serif"
+
+pages:
+  - id: "user-management"
+    title: "User Management"
+    description: "Manage user accounts and permissions"
+    layout: "tabs"
+    style:
+      backgroundColor: "#f8fafc"
+      padding: "2rem"
+      maxWidth: "1200px"
+    forms:
+      - id: "user-registration"
+        title: "User Registration"
+        description: "Create a new user account"
+        submitText: "Register User"
+        onSubmit: "createUser"
+        widgets:
+          - id: "username"
+            type: "text"
+            label: "Username"
+            placeholder: "Enter username"
+            required: true
+            validation:
+              min: 3
+              max: 20
+              pattern: "^[a-zA-Z0-9_]+$"
+              message: "Username must be 3-20 characters, alphanumeric and underscore only"
+            style:
+              width: "100%"
+              className: "form-input"
+          
+          - id: "email"
+            type: "email"
+            label: "Email Address"
+            placeholder: "user@example.com"
+            required: true
+            style:
+              width: "100%"
+              className: "form-input"
+          
+          - id: "password"
+            type: "password"
+            label: "Password"
+            placeholder: "Enter password"
+            required: true
+            validation:
+              min: 8
+              message: "Password must be at least 8 characters"
+            style:
+              width: "100%"
+              className: "form-input"
+          
+          - id: "role"
+            type: "select"
+            label: "User Role"
+            required: true
+            options:
+              - value: "user"
+                label: "Regular User"
+              - value: "admin"
+                label: "Administrator"
+              - value: "moderator"
+                label: "Moderator"
+            style:
+              width: "100%"
+              className: "form-select"
+          
+          - id: "active"
+            type: "checkbox"
+            label: "Account Active"
+            style:
+              className: "form-checkbox"
+          
+          - id: "submit"
+            type: "button"
+            label: "Register User"
+            style:
+              className: "btn-primary"
+
+      - id: "user-search"
+        title: "Search Users"
+        description: "Find existing users"
+        submitText: "Search"
+        onSubmit: "searchUsers"
+        widgets:
+          - id: "search-term"
+            type: "text"
+            label: "Search Term"
+            placeholder: "Enter username or email"
+            style:
+              width: "100%"
+              className: "form-input"
+          
+          - id: "role-filter"
+            type: "select"
+            label: "Filter by Role"
+            options:
+              - value: ""
+                label: "All Roles"
+              - value: "user"
+                label: "Regular User"
+              - value: "admin"
+                label: "Administrator"
+              - value: "moderator"
+                label: "Moderator"
+            style:
+              width: "100%"
+              className: "form-select"
+          
+          - id: "search-btn"
+            type: "button"
+            label: "Search"
+            style:
+              className: "btn-secondary"
+
+  - id: "settings"
+    title: "Application Settings"
+    description: "Configure application preferences"
+    layout: "single"
+    style:
+      backgroundColor: "#ffffff"
+      padding: "1.5rem"
+      maxWidth: "800px"
+    forms:
+      - id: "general-settings"
+        title: "General Settings"
+        description: "Basic application configuration"
+        submitText: "Save Settings"
+        onSubmit: "saveSettings"
+        widgets:
+          - id: "app-name"
+            type: "text"
+            label: "Application Name"
+            placeholder: "My Web Admin"
+            required: true
+            style:
+              width: "100%"
+              className: "form-input"
+          
+          - id: "theme-mode"
+            type: "select"
+            label: "Theme Mode"
+            options:
+              - value: "light"
+                label: "Light"
+              - value: "dark"
+                label: "Dark"
+              - value: "auto"
+                label: "Auto"
+            style:
+              width: "100%"
+              className: "form-select"
+          
+          - id: "notifications"
+            type: "checkbox"
+            label: "Enable Notifications"
+            style:
+              className: "form-checkbox"
+          
+          - id: "auto-save"
+            type: "checkbox"
+            label: "Auto-save Forms"
+            style:
+              className: "form-checkbox"
+          
+          - id: "description"
+            type: "textarea"
+            label: "Application Description"
+            placeholder: "Enter a description for your application"
+            style:
+              width: "100%"
+              height: "100px"
+              className: "form-textarea" 
